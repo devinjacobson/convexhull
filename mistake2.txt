@@ -1,0 +1,72 @@
+so this is simply need to check the other side of the insertion.  
+if we are closer to the opposite side, perhaps we need further checks.  
+look how close we are to the other points on the other sides of the peaks.  
+
+Node[x=349,y=140] 7
+
+Node[x=390,y=94] 4
+
+Node[x=425,y=94]
+
+Node[x=517,y=116]
+
+Node[x=505,y=148]
+
+Node[x=492,y=165]
+
+Node[x=429,y=209]
+
+Node[x=415,y=246]
+
+Node[x=414,y=279]
+
+Node[x=500,y=270]
+
+Node[x=481,y=338]
+
+Node[x=488,y=365]
+
+Node[x=313,y=356]
+
+Node[x=265,y=346]
+
+Node[x=300,y=259] 15
+
+Node[x=256,y=257] 14
+
+Node[x=250,y=242] 13
+
+Node[x=243,y=212] 11
+
+Node[x=120,y=163] 12
+
+Node[x=15,y=224]
+
+Node[x=107,y=78]
+
+Karp-Held: 1667.0
+mysolution: 1694.2766628608783
+UGGGHHHH
+mysolution: 
+Node[x=15,y=224] 0 0.0
+Node[x=107,y=78] 0 0.0
+Node[x=120,y=163] 12 27.465208971602266
+Node[x=243,y=212] 11 69.24868427554179
+Node[x=250,y=242] 13 44.80958865015356
+Node[x=256,y=257] 14 23.470226020591724
+Node[x=300,y=259] 15 23.279840782068305
+Node[x=349,y=140] 7 27.98379828920224
+Node[x=390,y=94] 4 0.04967466242874252
+Node[x=425,y=94] 0 0.0
+Node[x=517,y=116] 0 0.0
+Node[x=505,y=148] 5 1.3429605712806278
+Node[x=492,y=165] 6 4.602839429522021
+Node[x=429,y=209] 8 65.14523230544296
+Node[x=415,y=246] 9 34.27779536601865
+Node[x=414,y=279] 10 31.161526025462436
+Node[x=500,y=270] 0 0.0
+Node[x=481,y=338] 2 2.742288358165567
+Node[x=488,y=365] 0 0.0
+Node[x=313,y=356] 0 0.0
+Node[x=265,y=346] 0 0.0
+Node[x=15,y=224] 0 0.0

@@ -1,0 +1,82 @@
+There must be some property about the angle.  
+Along with the lengths
+6,7,8,9,10,11,12 insertions can be better.  
+Perhaps we have to sum the insertion costs.  
+that should be the total distance.  
+If at any time the total insertion costs are 
+
+both angle out in this scenario.  
+so we have to do extra searches for this I think.  
+
+
+Node[x=203,y=159]
+
+Node[x=178,y=198]
+
+Node[x=274,y=289]
+
+Node[x=346,y=281] 1
+
+Node[x=339,y=258] 6
+
+Node[x=322,y=216] 7
+
+Node[x=410,y=180] 9
+
+Node[x=413,y=141] 8
+
+Node[x=475,y=182] 10
+
+Node[x=490,y=257] 12
+
+Node[x=487,y=270] 11
+
+Node[x=462,y=313] 0
+
+Node[x=546,y=325]
+
+Node[x=609,y=283]
+
+Node[x=627,y=245]
+
+Node[x=581,y=185]
+
+Node[x=516,y=150]
+
+Node[x=473,y=130]
+
+Node[x=426,y=76]
+
+Node[x=373,y=88]
+
+Node[x=337,y=123]
+
+Node[x=280,y=82]
+
+Karp-Held: 1421.0
+mysolution: 1427.571892811718
+UGGGHHHH
+mysolution: 
+Node[x=178,y=198] 0 0.0
+Node[x=203,y=159] 0 0.0
+Node[x=280,y=82] 0 0.0
+Node[x=337,y=123] 5 27.2301721666462
+Node[x=373,y=88] 4 1.411624417965868
+Node[x=426,y=76] 0 0.0
+Node[x=413,y=141] 8 55.69814836032444
+Node[x=410,y=180] 9 58.54530830160746
+Node[x=475,y=182] 10 36.6391154061956
+Node[x=473,y=130] 3 2.4966348128632063
+Node[x=516,y=150] 2 0.8514226623269678
+Node[x=581,y=185] 0 0.0
+Node[x=627,y=245] 0 0.0
+Node[x=609,y=283] 0 0.0
+Node[x=546,y=325] 0 0.0
+Node[x=490,y=257] 12 20.77274692600416
+Node[x=487,y=270] 11 45.54628603970099
+Node[x=462,y=313] 0 0.0
+Node[x=346,y=281] 1 2.8538826495423564
+Node[x=339,y=258] 6 23.612437004798608
+Node[x=322,y=216] 7 60.66319732801219
+Node[x=274,y=289] 0 0.0
+Node[x=178,y=198] 0 0.0

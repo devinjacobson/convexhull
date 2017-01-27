@@ -1,0 +1,312 @@
+So this simple applet compiles and runs ok.  
+Now what do we want to do?  
+Need to add the find cheapest insert.  
+Then need to run through all possibilities algorithm.  
+
+OK, the animation is not so good, but we have the remaining
+nodes and now we need to figure out the cheapest insert of those nodes.  
+
+So we can just insert the node, calc distance, and remove the node.  
+
+
+Cant seem to find a counterexample.  
+Everything appears to work out when you go from Convex hull to 
+the cheapest insertion.  
+But if it works, why does it work?  
+First of all, we must include all points, so the shortest route must be greater
+than the convex hull.  
+This is fairly simple.  
+Then why do we add the cheapest insertion after the convex hull?  
+The cheapest insertion is the shortest route for those hull+1 points.  
+but can we prove this recursively?  
+shortest route for the convex hull+2 points does not necessarily have to be 
+one that includes that point.  
+If we go inward from the convex hull, and take the minimal point, there will never
+be one of the remaining points inside of the hull that we have created.  
+Otherwise, it would have been selected before the point which included it.  
+Is this significant?  
+
+OK, so we can fake it out if we have a cheap insert on the wrong way toward 
+an inner arc.  
+
+
+So calculate the distance from the outer lines in a double array.  
+Then calculate the distance from the new lines once we have done the cheapest 
+insertion.  
+Or do we even need to do the cheapest insertion now?  we can just calculate all 
+of the potential inner points.  
+Then we would need the distance fo the resulting lines plus the distance to all other
+points perpendicularly.  
+But what do we do with non-overlapping lines where the points are outside of the 
+box which the new lines cover?  
+We have to at least add the cost of insertion from the closest base.  
+All other points should add the cost of insertion from the closest base, 
+or if the new line is closer use that.  
+
+then we have a cost array of  outer lines, inner points
+
+have a shortest distance array, which is the distance of adding to the closest 
+insert.  If the new line does not get closer than this it is useless.  
+SO those points are not included.  
+
+When we go from the outer hull, is calculating *extra distance to individual points
+the same as calculating the entire distance?  
+Or average extra distance?  Would this help?  
+So the distance change + avg extra distance to individual points.  
+This is just calculating two steps ahead.  Which is no different really.  
+
+Have to calculate something with angle as well as distance.  
+We need to use angle.  
+
+Is there some way to work the opposite way from the farthest point and work backwards
+if we have the farthest point and the line through the next two closest points 
+along with the shortest path through the farthest point is shorter than the line 
+through the farthest point and the next closest point, then we have eliminated 
+that point.  
+
+When the point is in the middle of two points, it is much better placed 
+because if we have a width of 8, and that is divided into two, 
+two 3,4,5 triangles hypotenuse 10 total is much shorter than 
+other triangles, i.e. 3,3,4.34 and 3,5,5.83
+or whatever.  As the point gets closer to the middle, the line is more efficient.  
+Can we use this?  
+What is this relationship?  And can we quantify it.  
+
+Compared to the equilateral triangle.  
+3,3,4.34 and 3,5,5.83
+10.17/10
+3,2,3.60 and 3,6,6.71
+10.31/10
+3,1,3.16 and 3,7,7.61
+10.77/10
+3,0,3 and 3,8,8.54
+11.54/10
+
+Is this important?  This is like opportunity costs for this line.  
+If the equilateral is better, then we choose the equilateral triangle first.  
+This ensures no wasted length.  Then we work our way in from there?  
+
+
+calculate the angle between three points
+arccos((P23^2 - P12^2 - P13^2)/(2*P12*P13))
+where P12 is the length of the segment from P1 to P2, calculated by
+sqrt((P1x-P2x)^2 + (P1y-P2y)^2)
+
+What do we do with this angle?  
+
+
+We have to find the line equation of our line in order to find where the 
+points cross.  
+slope is m=y-y1/x-x1.  
+And the perpendicular line is -1/m
+
+m1*x+b = 0
+m1*x+b = y
+
+1,2
+
+4,5
+
+5-2/4-1 = 1
+m1=1
+
+1*1+b=2
+b=1
+
+-1,1
+-1*-1+b=1
+b=0
+-1x
+
+-1x=y
+1x+1=y
+
+1x+1=-1x
+
+2x+1=0
+2x=-1
+x=-1/2
+
+-1x=1/2
+1x+1=1/2
+
+So we want to minimize angle and we want to minimize perpendicular distance.  
+These calculations should take place when we get the minimum insert.  
+
+It seems lower angles are better.  
+But hard to tell.  
+How do we weight the angles though.  
+Have to weight by distance of the two lines connected.  
+
+
+Can we use geometry to help.  
+
+or perhaps we want the triangle area/perimeter to have no overlap.  
+or the least overlap possible.  
+So we have a 3 dimensional array to get all of the areas of all of the 
+triangles possible.  
+
+is exclusion enough to make progress on this?  
+even with exclusion though you need a PxP array.  
+This is basically impossible with any current technology.  
+
+What about some sort of path inclusion algorithm.  
+This is how most of the current stuff works I imagine.  
+
+There is no way that we will know the way in from the convex hull by any 
+single formula.  
+We would have to work in and out.  
+As this depends on the configuration of the internal points.  
+The convex hull is one starting point.  
+There must be other non-statistical ways to improve as well.  
+We can do clusters and such, but that is all statistical.  
+
+Would it help to find the best number of points we can fit in between two 
+hull points.  Compare with average distance between points or 
+shortest distance.  
+Then take a subset of the best route between A->B.  
+If we take the next nearest point, or the 
+next two points, we know that the route is going to be 
+at least that big.  
+Then go from there and try to get the most points for the cheapest.  
+We know the hull is right, 
+and we know there are no intersections (not too obvious that this rule helps that 
+much).  
+
+Cant we just say that any point added can cause the previous route to change, 
+so there is no general solution other than statistical.  
+Or if adding a random point only causes certain calculations to take place, we can 
+prove that any route should not be n!, but whatever amount of calculations it 
+takes to add the one random point.  
+If the point is on the hull, it will take quite a number of calculations 
+I would imagine.  
+
+
+Improvement algorithms such as 
+Lin Kernigan variable edge exchange have no way of guaranteeing 
+best path I dont see.  
+
+
+äøéöÇÃåÍå¥Å@óRóà
+
+wikipedia we could get the following
+external links
+internal links
+places
+
+compare the depth of the languages compared to 
+one another.  
+Japanese page has 3 links, whereas English page
+has 10 links, and what are the differences?  
+
+
+OK, so lets do the convex hull, and then find the next convex hull, and then 
+
+OK, so this is close to what we want.  
+Then we want to measure the best way to inject.  
+the shortest total distance of all hulls.  
+Why is this not a viable solution.  
+Even if not the optimal solution, seems it would be a very good solution.  
+For random anyway.  
+OK, that looks good now we need to insert and minimize the total convex hull size.  
+
+so sometimes we have to revert back.  
+keep track of the insertion point and time, and if there is an insertion that is less, 
+we have to use that one.  
+The total convex hulls though is a good guideline.  
+
+Check the already inserted to see if either of the two new sides allows for a better insertion.  
+better than the insertioncost that we had before.  
+
+
+
+
+
+If the displacement is less for a point after any future point is added, then we have to void all points included after that point.
+
+
+Go back along the displaced point until the next original point.
+At the outer hull?
+Or until the insertionindex is less than the displaced point.
+If we constantly check the displacement, we know it is the shortest path with the subset we have.
+Only when the new sides displacement is less do we need to go back.
+
+Taking away all up to the original outter hull i think is enough.  We still know that anything outside of the two points on the backed out outter hull is still the shortest path for that subset.
+
+And then repeat the process once backed out.
+I think this leads to absolute shortest path, no guarantee of algorithm time, but in general i think not so bad.
+Much better than n factorial anyway.
+
+Can we guarantee for the overlapped points.
+Perhaps they need to be included in the insertion sequence and checked against all sides at that time.
+
+Outter hull and one point, ok.
+Outter hull and two, ok
+Outter hull and three? Can we guarantee?
+If we check the new side displacement i say yes.
+
+No guaranteed O. Have to check the practical numbers.
+
+
+Question is can this get stuck.
+And how do we deal with overlapped points.
+Still not 100%
+
+
+intuition is that purely shortest distance will loop, but total distance of inner convex hulls
+will not.  
+Not sure why I feel this way.  
+But I think we can try both without too much trouble.  
+I dont know that we can test very far though.  
+Only about 12 points is maximum.  
+
+how does current algorithm compare to n!
+and how does this one.  
+
+
+
+something like a diamond inside of a square may cause this if we simply use shortest distance.  
+my feeling is we can get in a lot of trouble with just simple shortest distance.  
+I dont know exactly what configurations will cause this problem.  
+Total inner convex hulls is much better.  
+Does it work in the first place though.  
+Have to just test.  
+
+
+This is very rudimentary how long we take to check or to run.  
+But it gives an idea already.  
+We need to be able to put in the points of a known TSP problem.  
+
+Just at 11 points we are already so much faster.  
+I think 12 or 13 is the limit with the current setup.  
+
+with 11 the check time is already 6 minutes.  
+This is quite inefficient given.  
+calc time is 30 seconds including 500 ms delay for each point.  
+
+
+Still a slight overlap at the end.  
+But it looks pretty good.  
+30 seconds for about 50 points.  
+So very negligible.  
+And that is with some resets.  
+180 seconds for 75 points 
+This is with all the logging and riff-raff.  
+There may be a slight bug, but ...
+Looks pretty promising.  
+
+I think I just have one line left over.  
+For whatever reason.  
+The line is not really there. Or unneeded.  
+This happened several times.  
+There may be some problem with internal overlap in a between two original hull points.  
+But I think this is just a minor detail.  
+If we have no loops, then I think the major problem is over.  
+It does look quite good to me, but we cant confirm it really.  
+Have to just compare to other algorithms until we are absolutely confident.  
+
+OK, enough for now.  
+
+Move this all to the other server, and play a bit more perhaps.  
+
+
